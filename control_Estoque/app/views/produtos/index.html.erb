@@ -1,0 +1,65 @@
+<div class="container-fluid">	
+	<div class="container">	
+
+		<h1>Novo</h1>
+		<%= render 'form', produto: @produto %>
+        <br>
+
+		<h1>Produtos</h1>
+		<form action="/produtos" method="GET" class="form-inline">
+			<input type="text" name="search" id="search" class="form-control" style="width: 89%;
+																				     margin: 10px">
+			<input type="submit" value="Buscar" class="btn btn-info">
+		</form>
+		<br>
+		<div id="resultado" class="container mv"> 
+			<% @produtos.each do |produto| %>
+			  <div class="card mv1">
+			    <div class="card-body">
+			      <h5 class="card-title"><%= produto.nome %></h5>
+			      <p class="card-text">
+			      	<b>Qtd:</b> <%= produto.qtd %><br>
+			      	<b>Add:</b> <%= produto.created_at %><br>
+			      </p>
+			      <a href="" data-toggle="modal" data-target="#exampleModal<%= produto.id %>" class="btn btn-warning">
+			      	Editar
+			      </a>
+			      <%= link_to 'Apagar', produto, method: :delete, class: 'destroy btn btn-danger' %>
+			    </div>
+			  </div>
+
+			  <!-- Modal -->
+				<div class="modal fade" id="exampleModal<%=produto.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-body">
+				        <h1>Editar </h1>
+				     
+						<form action="/produtos/<%=produto.id%>" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
+					       <input type="hidden" name="_method" value="patch">
+					       <input type="hidden" name="authenticity_token" value="kd/it806BFEwgcTeg+QAS8dbp8DmbMuUfzk2kg7xdddYzI6K3yEuj2aAH+ab58drF7sqHw4QwjrgpekZRdkEWA==">
+
+						  <div class="form-group">
+						    <label for="produto_nome">Nome</label>
+						    <input class="form-control" type="text" value="<%=produto.nome%>" name="produto[nome]" id="produto_nome">
+						  </div>
+
+						  <div class="form-group">
+						    <label for="produto_qtd">Quantidade</label>
+						    <input class="form-control" type="text" value="<%=produto.qtd%>" name="produto[qtd]" id="produto_qtd">
+						  </div>
+					  </div>
+					  <div class="modal-footer">
+					    <input type="submit" name="commit" class="btn btn-info" value="Update Produto">
+					  </div>
+				      </form>	  
+				    </div>
+				  </div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
+

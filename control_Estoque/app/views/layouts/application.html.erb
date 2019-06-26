@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Estoque</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="/Bootstrap/node_modules/bootstrap/compile/bootstrap.css">
+    <script src="/Bootstrap/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/Bootstrap/node_modules/popper.js/dist/umd/popper.js"></script>
+    <script src="/Bootstrap/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/Bootstrap/node_modules/bootstrap/js/modernizr-2.6.2.min.js"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">CONTROLE DE ESTOQUE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <br><br>
+    <%= yield %>
+  </body>
+</html>

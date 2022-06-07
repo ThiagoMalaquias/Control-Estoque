@@ -4,11 +4,9 @@ class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.json
   def index
-      @produtos = Produto.all.order(nome: :asc)
-      if params[:search].present?
-         @produtos = Produto.where(["Nome LIKE ?","%#{params[:search]}%"])
-      end
-      @produto = Produto.new
+    @produtos = Produto.all.order(nome: :asc)
+    @produtos = Produto.where(["Nome LIKE ?","%#{params[:search]}%"]) if params[:search].present?
+    @produto = Produto.new
   end
 
   # GET /produtos/1
